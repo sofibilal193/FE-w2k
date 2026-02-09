@@ -35,6 +35,11 @@ export class Home {
 
     /* 🔹 NEW CARDS */
     {
+      title: 'Houseboat Stay',
+      description: 'Experience traditional living on Dal Lake.',
+      icon: '🏠',
+    },
+    {
       title: 'Dal Lake Experience',
       description: 'Enjoy peaceful shikara rides and iconic houseboats.',
       icon: '🚣‍♂️',

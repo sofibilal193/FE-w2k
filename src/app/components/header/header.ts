@@ -1,18 +1,27 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  standalone: true,
+  imports: [RouterModule],   // ✅ THIS FIXES THE ERROR
   templateUrl: './header.html',
-  styleUrl: './header.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'app-header',
-    role: 'banner',
-  },
+  styleUrl: './header.css'
 })
 export class Header {
-  appTitle = signal('Way to Kashmir');
+  constructor(
+    private auth: Auth,
+    private router: Router
+  ) {}
+  isLoggedIn = computed(() => this.auth.isLoggedIn());
+    
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/']);
+  }
 }

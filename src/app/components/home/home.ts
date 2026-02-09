@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { CommonModule } from '@angular/common';
-import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +31,38 @@ export class Home {
       title: 'Perfect Climate',
       description: 'Visit during any season for unique and memorable experiences.',
       icon: '☀️',
+    },
+
+    /* 🔹 NEW CARDS */
+    {
+      title: 'Dal Lake Experience',
+      description: 'Enjoy peaceful shikara rides and iconic houseboats.',
+      icon: '🚣‍♂️',
+    },
+    {
+      title: 'Snow Paradise',
+      description: 'Witness magical snowfall and winter sports in Gulmarg.',
+      icon: '❄️',
+    },
+    {
+      title: 'Lush Meadows',
+      description: 'Walk through green meadows of Pahalgam and Sonamarg.',
+      icon: '🌿',
+    },
+    {
+      title: 'Spiritual Heritage',
+      description: 'Visit ancient shrines, mosques, and spiritual landmarks.',
+      icon: '🕌',
+    },
+    {
+      title: 'Local Handicrafts',
+      description: 'Shop authentic pashmina, carpets, and wooden crafts.',
+      icon: '🧵',
+    },
+    {
+      title: 'Delicious Cuisine',
+      description: 'Taste traditional Wazwan and Kashmiri delicacies.',
+      icon: '🍲',
     },
   ]);
 }

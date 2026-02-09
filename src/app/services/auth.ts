@@ -1,9 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ApiClient } from '../api/api-client';
 import { tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class Auth {
+
+  private platformId = inject(PLATFORM_ID);
+
   constructor(private api: ApiClient) {}
 
   login(username: string, password: string) {
@@ -11,15 +16,24 @@ export class Auth {
       username,
       password
     }).pipe(
-      tap(res => localStorage.setItem('token', res.token))
+      tap(res => {
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('token', res.token);
+        }
+      })
     );
   }
 
   logout() {
-    localStorage.removeItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
   }
 
   isLoggedIn(): boolean {
+    if (!isPlatformBrowser(this.platformId)) {
+      return false; // ✅ SSR-safe default
+    }
     return !!localStorage.getItem('token');
   }
 }

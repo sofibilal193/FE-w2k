@@ -1,0 +1,24 @@
+<div class="login-page">
+  <div class="login-card">
+    <h2>Login</h2>
+
+    <input
+      type="text"
+      placeholder="Username"
+      #username />
+
+    <input
+      type="password"
+      placeholder="Password"
+      #password />
+
+    <button (click)="login(username.value, password.value)">
+      Login
+    </button>
+
+    <p class="hint">
+      Demo credentials:<br />
+      <b>kminchelle / 0lelplR</b>
+    </p>
+  </div>
+</div>

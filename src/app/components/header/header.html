@@ -6,29 +6,25 @@
       routerLink="/home"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      class="nav-link">
+      class="nav-link"
+    >
       Home
     </a>
 
-    <a
-      routerLink="/about"
-      routerLinkActive="active"
-      class="nav-link">
-      About
-    </a>
+    <a routerLink="/about" routerLinkActive="active" class="nav-link"> About </a>
 
-    <a
-      routerLink="/privacy-policy"
-      routerLinkActive="active"
-      class="nav-link">
-      Privacy Policy
-    </a>
+    <a routerLink="/privacy-policy" routerLinkActive="active" class="nav-link"> Privacy Policy </a>
 
     <!-- 🔐 AUTH BUTTON -->
     @if (!isLoggedIn()) {
-      <button class="login-btn" (click)="goToLogin()">Login</button>
+      <button class="login-btn" (click)="openLogin()">Login</button>
     } @else {
       <button class="login-btn logout" (click)="logout()">Logout</button>
     }
   </nav>
 </div>
+
+<!-- 🔐 LOGIN POPUP -->
+@if (showLogin()) {
+  <app-login (closed)="closeLogin($event)" />
+}

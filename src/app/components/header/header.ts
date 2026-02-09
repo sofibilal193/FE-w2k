@@ -1,27 +1,32 @@
 import { Component, computed, signal } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Auth } from '../../services/auth';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],   // ✅ THIS FIXES THE ERROR
+  imports: [RouterModule, Login],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header {
-  constructor(
-    private auth: Auth,
-    private router: Router
-  ) {}
+
+  showLogin = signal(false);
+
+  constructor(private auth: Auth) {}
+
   isLoggedIn = computed(() => this.auth.isLoggedIn());
-    
-  goToLogin() {
-    this.router.navigate(['/login']);
+
+  openLogin() {
+    this.showLogin.set(true);
+  }
+
+  closeLogin(success: boolean) {
+    this.showLogin.set(false);
   }
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/login']);
   }
 }

@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Auth } from '../../services/auth';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class Login {
 
-  constructor(
-    private auth: Auth,
-    private router: Router
-  ) {}
+  @Output() closed = new EventEmitter<boolean>();
+
+  constructor(private auth: Auth) {}
 
   login(username: string, password: string) {
     this.auth.login(username, password).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
-      error: () => {
-        alert('Invalid username or password');
-      }
+      next: () => this.closed.emit(true),
+      error: () => alert('Invalid username or password')
     });
+  }
+
+  close() {
+    this.closed.emit(false);
   }
 }

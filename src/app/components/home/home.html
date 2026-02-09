@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<main class="main-content">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Way to Kashmir</h1>
+      <p>Discover the paradise on earth</p>
+      <button class="cta-button">Explore Now</button>
+    </div>
+  </section>
+  
+  <section class="features">
+    <div class="container">
+      <h2>Why Visit Kashmir?</h2>
+      <div class="features-grid">
+        @for (feature of features(); track feature.title) {
+          <div class="feature-card">
+            <div class="feature-icon">{{ feature.icon }}</div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready for an Adventure?</h2>
+      <p>Plan your trip to Kashmir today and create memories that last a lifetime.</p>
+      <button class="cta-button inverse">Get Started</button>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

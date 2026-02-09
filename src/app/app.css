@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Ensure top-level root stretches full width and no unexpected margins */
+app-root, body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

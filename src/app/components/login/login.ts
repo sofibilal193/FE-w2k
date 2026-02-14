@@ -15,10 +15,10 @@ export class Login {
 
   constructor(private auth: Auth) {}
 
-  login(username: string, password: string) {
-    this.auth.login(username, password).subscribe({
+  login(email: string, password: string) {
+    this.auth.login(email, password).subscribe({
       next: () => this.closed.emit(true),
-      error: () => alert('Invalid username or password')
+      error: () => alert('Invalid email or password')
     });
   }
 

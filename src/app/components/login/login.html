@@ -3,16 +3,16 @@
     <h2>Login</h2>
 
     <input
-      type="text"
-      placeholder="Username"
-      #username />
+      type="email"
+      placeholder="Email"
+      #email />
 
     <input
       type="password"
       placeholder="Password"
       #password />
 
-    <button (click)="login(username.value, password.value)">
+    <button (click)="login(email.value, password.value)">
       Login
     </button>
 

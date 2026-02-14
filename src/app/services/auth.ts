@@ -19,8 +19,8 @@ export class Auth {
     }
   }
 
-  login(username: string, password: string) {
-    return this.api.post<any>('/auth/login', { username, password }).pipe(
+  login(email: string, password: string) {
+    return this.api.post<any>('/devtokens', { email, password }).pipe(
       tap(res => {
         if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('token', res.token);

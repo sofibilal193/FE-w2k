@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../services/auth';
 
@@ -9,11 +9,15 @@ import { Auth } from '../../services/auth';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login {
+export class Login implements OnInit{
 
   @Output() closed = new EventEmitter<boolean>();
 
-  constructor(private auth: Auth) {}
+  constructor(private readonly auth: Auth) {}
+
+  ngOnInit(): void {
+      this.auth.logout();
+  }
 
   login(email: string, password: string) {
     this.auth.login(email, password).subscribe({

@@ -8,10 +8,7 @@ export class CryptoService {
   // =============================
   // PUBLIC ENCRYPT METHOD
   // =============================
-  async encryptAsymmetric(
-    plainText: string,
-    publicKeyBase64: string
-  ): Promise<string | null> {
+  async encryptAsymmetric(plainText: string, publicKeyBase64: string): Promise<string | null> {
 
     if (!plainText || !publicKeyBase64) return null;
 

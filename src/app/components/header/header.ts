@@ -14,7 +14,7 @@ export class Header {
 
   showLogin = signal(false);
 
-  constructor(private auth: Auth) {}
+  constructor(private readonly auth: Auth) {}
 
   isLoggedIn = computed(() => this.auth.isLoggedIn());
 
